@@ -3,20 +3,8 @@ import {
   searchRobots,
   RobotsResponseType,
 } from '@services/RobotsAPI'
+import { sortBy } from '@utils/sortBy'
 import { useEffect, useState } from 'react'
-
-// TODO: Separate sortByDate in a utils.tsx if in the future it is used in other places
-const sortByDate = (list: RobotData[] = []) => {
-  // Make a deep clone in order to not mutate the original array
-  const resCopy: RobotData[] = structuredClone(list)
-
-  // Sort the results by date
-  return resCopy.sort(
-    (a, b) =>
-      new Date(b.robotStats.updatedOn).getTime() -
-      new Date(a.robotStats.updatedOn).getTime()
-  )
-}
 
 export const useRobotList = () => {
   const [robots, setRobots] = useState<RobotData[] | null>(null)
@@ -31,7 +19,11 @@ export const useRobotList = () => {
 
     if (error) return setError(error)
 
-    setRobots(sortByDate(res?.content))
+    const sortedRobots = res?.content?.sort(
+      sortBy({ order: 'desc', headerId: 'updatedAt' })
+    )
+
+    setRobots(sortedRobots || [])
   }
 
   const searchData = async ({ query }: { query: string } = { query: '' }) => {
@@ -40,7 +32,11 @@ export const useRobotList = () => {
     setIsLoading(false)
     if (error) return setError(error)
 
-    setRobots(sortByDate(res?.content))
+    const sortedRobots = res?.content?.sort(
+      sortBy({ order: 'desc', headerId: 'updatedAt' })
+    )
+
+    setRobots(sortedRobots || [])
   }
 
   useEffect(() => {
