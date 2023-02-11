@@ -1,17 +1,19 @@
+import MainLayout from './layouts/MainLayout'
+
 function App() {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        width: '100vw',
-        background: 'tomato',
-      }}
-    >
-      Content
-    </div>
+    <MainLayout>
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        Content
+      </div>
+    </MainLayout>
   )
 }
 
