@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import {
   TablePagination,
   Toolbar,
@@ -9,6 +9,7 @@ import {
   TableHead,
   TableRow,
   Paper,
+  TableSortLabel,
 } from '@mui/material'
 
 import TitleGradient from '@components/TitleGradient'
@@ -23,15 +24,50 @@ import NetworkIndicator from '@components/NetworkIndicator'
 import EmptyTable from './TableStates/EmptyTable'
 import ErrorTable from './TableStates/ErrorTable'
 import LoadingTable from './TableStates/LoadingTable'
+import { Order, sortBy, SupportedHeaders } from '@utils/sortBy'
 
+// This component could be extracted in a different file,
+// but i consider it's more understandable to keep it here
 const HEADERS = [
-  'Status',
-  'Name & Id',
-  'Last Updated',
-  'Location',
-  'Battery',
-  'Connection',
+  {
+    id: 'status',
+    label: 'Status',
+    sortable: true,
+  },
+  {
+    id: 'name',
+    label: 'Name & S/N',
+    sortable: true,
+  },
+  {
+    id: 'updatedAt',
+    label: 'Last Updated',
+    sortable: true,
+  },
+  {
+    id: 'location',
+    label: 'Location',
+    sortable: true,
+  },
+  {
+    id: 'battery',
+    label: 'Battery',
+    sortable: true,
+  },
+  {
+    id: 'connection',
+    label: 'Connection',
+    sortable: true,
+  },
 ]
+
+const tableConfigInit = {
+  rowsPerPageOptions: [5, 10, 25, 50, 100],
+  orderBy: 'updatedAt',
+  orderDir: 'desc',
+  rowsPerPage: 5,
+  page: 0,
+}
 
 type TableHeaderProps = {
   onSearch: ({ query }?: { query: string }) => any
@@ -49,13 +85,14 @@ const TableHeader = ({ onSearch }: TableHeaderProps) => {
       }}
     >
       <TitleGradient component="h5" variant="h5">
-        This are your Robots
+        These are your Robots
       </TitleGradient>
       <SearchInput onSearch={onSearch} />
     </Toolbar>
   )
 }
 
+// _______ ↓↓↓ Important part comes here ↓↓↓ _______
 type RobotTableProps = {
   robots: RobotData[] | null
   error: Error | null
@@ -63,18 +100,13 @@ type RobotTableProps = {
   // @ts-ignore::Property 'query' does not exist on type '{ query: string; } | undefined'.ts(2339)
   searchData: ({ query }?: { query: string }) => any
 }
-
 const RobotTable = ({
   robots,
   error,
   isLoading,
   searchData,
 }: RobotTableProps) => {
-  const [tableConfig, setTableConfig] = useState({
-    rowsPerPageOptions: [5, 10, 25, 50, 100],
-    rowsPerPage: 5,
-    page: 0,
-  })
+  const [tableConfig, setTableConfig] = useState(tableConfigInit)
 
   const handleRowsPerPageChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -85,15 +117,38 @@ const RobotTable = ({
       page: 0,
     })
   }
+
   const handlePageChange = (_: unknown, newPage: number) => {
     setTableConfig({ ...tableConfig, page: newPage })
   }
 
-  // Slice the data in order to paginate
-  const paginatedRows = (robots || []).slice(
-    tableConfig.page * tableConfig.rowsPerPage,
-    tableConfig.page * tableConfig.rowsPerPage + tableConfig.rowsPerPage
-  )
+  const handleSort = (headerId: string) => {
+    const { orderBy, orderDir } = tableConfig
+    if (orderBy === headerId) {
+      const newDir = orderDir === 'asc' ? 'desc' : 'asc'
+      return setTableConfig({ ...tableConfig, orderDir: newDir })
+    }
+    return setTableConfig({
+      ...tableConfig,
+      orderBy: headerId,
+      orderDir: 'asc',
+    })
+  }
+
+  // Sorts and Slice the data in order to paginate
+  const paginatedRows = useMemo(() => {
+    return (robots || [])
+      .sort(
+        sortBy({
+          headerId: tableConfig.orderBy as SupportedHeaders,
+          order: tableConfig.orderDir as Order,
+        })
+      )
+      .slice(
+        tableConfig.page * tableConfig.rowsPerPage,
+        tableConfig.page * tableConfig.rowsPerPage + tableConfig.rowsPerPage
+      )
+  }, [robots, tableConfig])
 
   return (
     <>
@@ -102,11 +157,24 @@ const RobotTable = ({
         <Table aria-label="robots table">
           <TableHead>
             <TableRow>
-              {HEADERS.map(head => (
-                <TableCell key={head} align="center">
-                  {head}
-                </TableCell>
-              ))}
+              {HEADERS.map(header => {
+                const { id, label, sortable } = header
+                return (
+                  <TableCell key={id} align="center">
+                    {!sortable ? (
+                      label
+                    ) : (
+                      <TableSortLabel
+                        active={tableConfig.orderBy === id}
+                        direction={tableConfig?.orderDir as 'asc' | 'desc'}
+                        onClick={() => handleSort(id)}
+                      >
+                        {label}
+                      </TableSortLabel>
+                    )}
+                  </TableCell>
+                )
+              })}
             </TableRow>
           </TableHead>
           <TableBody sx={{ width: '100%' }}>
