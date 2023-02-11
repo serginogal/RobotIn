@@ -22,6 +22,7 @@ module.exports = {
       '@layouts': path.resolve(__dirname, '../src/layouts'),
       '@hooks': path.resolve(__dirname, '../src/hooks'),
       '@views': path.resolve(__dirname, '../src/views'),
+      '@utils': path.resolve(__dirname, '../src/utils'),
     }
     return config
   },

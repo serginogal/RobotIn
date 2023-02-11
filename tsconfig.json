@@ -21,7 +21,8 @@
       "@services/*": ["services/*"],
       "@layouts/*": ["layouts/*"],
       "@hooks/*": ["hooks/*"],
-      "@views/*": ["views/*"]
+      "@views/*": ["views/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src"],
