@@ -30,6 +30,7 @@
 - Display a table of robots with columns for Status, Name & Id, Last Updated, Location, Battery and Connection
 - Pagination of the table data
 - Selection of number of rows in table data
+- Sorting by columns
 - Search bar to filter the table data by name and assembly id
 - A hero section with a button to open a desktop app
 
