@@ -1,8 +1,7 @@
+import { DESKTOP_APP_URI } from '@utils/consts'
 import TitleGradient from '@components/TitleGradient'
 import { Button, Container, Stack, Typography } from '@mui/material'
 import OpenInNewOutlinedIcon from '@mui/icons-material/OpenInNewOutlined'
-
-const APP_URL = 'zoommtg://'
 
 const Hero = () => {
   return (
@@ -16,7 +15,9 @@ const Hero = () => {
       </Typography>
       <Stack sx={{ pt: 2 }} alignItems="center">
         <Button
-          onClick={() => window.open(APP_URL, '_blank', 'noopener,noreferrer')}
+          onClick={() =>
+            window.open(DESKTOP_APP_URI, '_blank', 'noopener,noreferrer')
+          }
           variant="contained"
           startIcon={<OpenInNewOutlinedIcon />}
         >
