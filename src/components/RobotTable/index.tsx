@@ -40,6 +40,8 @@ const TableHeader = ({ onSearch }: TableHeaderProps) => {
   return (
     <Toolbar
       sx={{
+        position: 'sticky',
+        left: 0,
         display: 'flex',
         flexDirection: { md: 'row', sm: 'column', xs: 'column' },
         justifyContent: 'space-between',
