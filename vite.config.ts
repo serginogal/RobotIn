@@ -10,9 +10,10 @@ export default defineConfig({
     alias: {
       // @ts-ignore:Cannot find name '__dirname'.ts(2304)
       '@components': path.resolve(__dirname, './src/components'),
-      '@layouts': path.resolve(__dirname, './src/components'),
       '@services': path.resolve(__dirname, './src/components'),
+      '@layouts': path.resolve(__dirname, './src/components'),
       '@hooks': path.resolve(__dirname, './src/components'),
+      '@views': path.resolve(__dirname, './src/components'),
     },
   },
   plugins: [react()],
