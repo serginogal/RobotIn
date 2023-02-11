@@ -1,0 +1,232 @@
+{
+  "content": [
+    {
+      "name": "N10TestRobot-00029",
+      "status": "AVAILABLE",
+      "assemblyCode": "X20WZ20",
+      "robotStats": {
+        "updatedOn": "2023-01-16T18:53:20.676",
+        "batteryLevel": 85,
+        "isCharging": false,
+        "networkConnected": true
+      },
+      "venue": {
+        "location": "Haneda airport Terminal 2 Departures floor, Japan",
+        "coordinates": [35.5507045, 139.7858074],
+        "description": "Haneda airport Terminal 2 Departures floor",
+        "venueName": "Haneda airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00030",
+      "status": "IN-USE",
+      "assemblyCode": "X20WZ21",
+      "robotStats": {
+        "updatedOn": "2022-12-23T18:53:20.676",
+        "batteryLevel": 20,
+        "isCharging": false,
+        "networkConnected": true
+      },
+      "venue": {
+        "location": "Haneda airport Terminal 2 Departures floor, Japan",
+        "coordinates": [35.5507045, 139.7858074],
+        "description": "Haneda airport Terminal 2 Departures floor",
+        "venueName": "Haneda airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00031",
+      "status": "AVAILABLE",
+      "assemblyCode": "X20WZ22",
+      "robotStats": {
+        "updatedOn": "2023-01-02T10:21:16.676",
+        "batteryLevel": 40,
+        "isCharging": false,
+        "networkConnected": true
+      },
+      "venue": {
+        "location": "Haneda airport Terminal 2 Departures floor, Japan",
+        "coordinates": [35.5507045, 139.7858074],
+        "description": "Haneda airport Terminal 2 Departures floor",
+        "venueName": "Haneda airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00032",
+      "status": "OFFLINE",
+      "assemblyCode": "X20WZ23",
+      "robotStats": {
+        "updatedOn": "2023-02-10T14:48:59.676",
+        "batteryLevel": 10,
+        "isCharging": true,
+        "networkConnected": false
+      },
+      "venue": {
+        "location": "Haneda airport Terminal 2 Departures floor, Japan",
+        "coordinates": [35.5507045, 139.7858074],
+        "description": "Haneda airport Terminal 2 Departures floor",
+        "venueName": "Haneda airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00033",
+      "status": "OFFLINE",
+      "assemblyCode": "X20WZ24",
+      "robotStats": {
+        "updatedOn": "2022-11-09T09:06:25.676",
+        "batteryLevel": 78,
+        "isCharging": false,
+        "networkConnected": false
+      },
+      "venue": {
+        "location": "Nakano Station, Nakano, Tokyo, Japan",
+        "coordinates": [35.7058, 139.6658],
+        "description": "Nakano Station",
+        "venueName": "Nakano Station",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00034",
+      "status": "IN-USE",
+      "assemblyCode": "X20WZ25",
+      "robotStats": {
+        "updatedOn": "2023-01-20T22:13:40.676",
+        "batteryLevel": 15,
+        "isCharging": false,
+        "networkConnected": true
+      },
+      "venue": {
+        "location": "Haneda airport Terminal 2 Departures floor, Japan",
+        "coordinates": [35.5507045, 139.7858074],
+        "description": "Haneda airport Terminal 2 Departures floor",
+        "venueName": "Haneda airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00035",
+      "status": "OFFLINE",
+      "assemblyCode": "X20WZ24",
+      "robotStats": {
+        "updatedOn": "2023-02-05T18:43:20.676",
+        "batteryLevel": 78,
+        "isCharging": false,
+        "networkConnected": false
+      },
+      "venue": {
+        "location": "Nakano Station, Nakano, Tokyo, Japan",
+        "coordinates": [35.7058, 139.6658],
+        "description": "Nakano Station",
+        "venueName": "Nakano Station",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00036",
+      "status": "AVAILABLE",
+      "assemblyCode": "X20WZ25",
+      "robotStats": {
+        "updatedOn": "2023-01-12T17:23:20.676",
+        "batteryLevel": 35,
+        "isCharging": true,
+        "networkConnected": true
+      },
+      "venue": {
+        "location": "Haneda airport Terminal 2 Departures floor, Japan",
+        "coordinates": [35.5507045, 139.7858074],
+        "description": "Haneda airport Terminal 2 Departures floor",
+        "venueName": "Haneda airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00037",
+      "status": "OFFLINE",
+      "assemblyCode": "X20WZ24",
+      "robotStats": {
+        "updatedOn": "2022-12-28T20:32:20.676",
+        "batteryLevel": 78,
+        "isCharging": false,
+        "networkConnected": false
+      },
+      "venue": {
+        "location": "Nakano Station, Nakano, Tokyo, Japan",
+        "coordinates": [35.7058, 139.6658],
+        "description": "Nakano Station",
+        "venueName": "Nakano Station",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00038",
+      "status": "IN-USE",
+      "assemblyCode": "X20WZ25",
+      "robotStats": {
+        "updatedOn": "2022-11-30T10:20:14.676",
+        "batteryLevel": 15,
+        "isCharging": false,
+        "networkConnected": true
+      },
+      "venue": {
+        "location": "Haneda airport Terminal 2 Departures floor, Japan",
+        "coordinates": [35.5507045, 139.7858074],
+        "description": "Haneda airport Terminal 2 Departures floor",
+        "venueName": "Haneda airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00039",
+      "status": "OFFLINE",
+      "assemblyCode": "X20WZ24",
+      "robotStats": {
+        "updatedOn": "2023-01-04T18:03:20.676",
+        "batteryLevel": 78,
+        "isCharging": false,
+        "networkConnected": false
+      },
+      "venue": {
+        "location": "Nakano Station, Nakano, Tokyo, Japan",
+        "coordinates": [35.7058, 139.6658],
+        "description": "Nakano Station",
+        "venueName": "Nakano Station",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    },
+    {
+      "name": "N10TestRobot-00040",
+      "status": "AVAILABLE",
+      "assemblyCode": "X20WZ25",
+      "robotStats": {
+        "updatedOn": "2023-02-05T19:49:20.676",
+        "batteryLevel": 67,
+        "isCharging": false,
+        "networkConnected": true
+      },
+      "venue": {
+        "location": "Narita airport Terminal 1 Departures floor, Japan",
+        "coordinates": [35.7636, 140.3859],
+        "description": "Narita airport Terminal 1 Departures floor",
+        "venueName": "Narita airport",
+        "city": "Tokyo",
+        "country": "Japan"
+      }
+    }
+  ]
+}
