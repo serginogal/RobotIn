@@ -27,9 +27,10 @@
 
 ## Features
 
-- Display a table of robots with columns for name, username, email, and address
+- Display a table of robots with columns for Status, Name & Id, Last Updated, Location, Battery and Connection
 - Pagination of the table data
-- Search bar to filter the table data by name, username, or email
+- Selection of number of rows in table data
+- Search bar to filter the table data by name and assembly id
 - A hero section with a button to open a desktop app
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -78,6 +79,15 @@ This is an example of how to list things you need to use the software and how to
 4. Run in development mode
    ```sh
    npm run dev
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Run Storybook
+
+1. Run the following script
+   ```sh
+   npm run storybook
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
