@@ -26,8 +26,8 @@ import ErrorTable from './TableStates/ErrorTable'
 import LoadingTable from './TableStates/LoadingTable'
 import { Order, sortBy, SupportedHeaders } from '@utils/sortBy'
 
-// This component could be extracted in a different file,
-// but i consider it's more understandable to keep it here
+// This constants/components could be extracted in different files,
+// but it's more readable if kept in here
 const HEADERS = [
   {
     id: 'status',
@@ -69,6 +69,7 @@ const tableConfigInit = {
   page: 0,
 }
 
+// __________ Table Header Component __________
 type TableHeaderProps = {
   onSearch: ({ query }?: { query: string }) => any
 }
@@ -91,8 +92,90 @@ const TableHeader = ({ onSearch }: TableHeaderProps) => {
     </Toolbar>
   )
 }
+// _______ END of Table Header Component _______
 
-// _______ ↓↓↓ Important part comes here ↓↓↓ _______
+// __________ Column Titles Component __________
+type ColumTitlesProps = {
+  titles: {
+    id: string
+    label: string
+    sortable: boolean
+  }[]
+  tableConfig: {
+    rowsPerPageOptions: number[]
+    orderBy: string
+    orderDir: string
+    rowsPerPage: number
+    page: number
+  }
+  onSort: (id: string) => void
+}
+const ColumnTitles = ({ titles, tableConfig, onSort }: ColumTitlesProps) => {
+  return (
+    <TableRow>
+      {titles.map(header => {
+        const { id, label, sortable } = header
+        return (
+          <TableCell key={id} align="center">
+            {!sortable ? (
+              label
+            ) : (
+              <TableSortLabel
+                active={tableConfig.orderBy === id}
+                direction={tableConfig?.orderDir as 'asc' | 'desc'}
+                onClick={() => onSort(id)}
+              >
+                {label}
+              </TableSortLabel>
+            )}
+          </TableCell>
+        )
+      })}
+    </TableRow>
+  )
+}
+// _______ END of Column Titles Component _______
+
+// __________ Robot Row Component __________
+type RobotRowProps = {
+  index: number
+  row: RobotData
+}
+const RobotRow = ({ row, index }: RobotRowProps) => {
+  return (
+    <TableRow
+      key={`${index}_${row.assemblyCode}`}
+      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+      hover
+    >
+      <TableCell align="center" component="th" scope="row">
+        <StatusIndicator status={row.status} />
+      </TableCell>
+      <TableCell align="center">
+        <NameAndId name={row.name} id={row.assemblyCode} />
+      </TableCell>
+      <TableCell align="center">
+        {new Date(row.robotStats.updatedOn).toLocaleString('ja-JP')}
+      </TableCell>
+      <TableCell align="center">
+        <LocationLink venue={row.venue} />
+      </TableCell>
+      <TableCell align="center">
+        <BatteryLevel
+          isCharging={row.robotStats.isCharging}
+          batteryLevel={row.robotStats.batteryLevel}
+        />
+      </TableCell>
+      <TableCell align="center">
+        <NetworkIndicator networkConnected={row.robotStats.networkConnected} />
+      </TableCell>
+    </TableRow>
+  )
+}
+// _______ END of Table Header Component _______
+
+// _________ ↓ Robot Table Component ↓ _________
+
 type RobotTableProps = {
   robots: RobotData[] | null
   error: Error | null
@@ -156,26 +239,11 @@ const RobotTable = ({
         <TableHeader onSearch={searchData} />
         <Table aria-label="robots table">
           <TableHead>
-            <TableRow>
-              {HEADERS.map(header => {
-                const { id, label, sortable } = header
-                return (
-                  <TableCell key={id} align="center">
-                    {!sortable ? (
-                      label
-                    ) : (
-                      <TableSortLabel
-                        active={tableConfig.orderBy === id}
-                        direction={tableConfig?.orderDir as 'asc' | 'desc'}
-                        onClick={() => handleSort(id)}
-                      >
-                        {label}
-                      </TableSortLabel>
-                    )}
-                  </TableCell>
-                )
-              })}
-            </TableRow>
+            <ColumnTitles
+              titles={HEADERS}
+              tableConfig={tableConfig}
+              onSort={handleSort}
+            />
           </TableHead>
           <TableBody sx={{ width: '100%' }}>
             {/* Loading data state */}
@@ -191,35 +259,7 @@ const RobotTable = ({
               robots &&
               paginatedRows.length > 0 &&
               paginatedRows.map((row, index) => (
-                <TableRow
-                  key={`${index}_${row.assemblyCode}`}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  hover
-                >
-                  <TableCell align="center" component="th" scope="row">
-                    <StatusIndicator status={row.status} />
-                  </TableCell>
-                  <TableCell align="center">
-                    <NameAndId name={row.name} id={row.assemblyCode} />
-                  </TableCell>
-                  <TableCell align="center">
-                    {new Date(row.robotStats.updatedOn).toLocaleString('ja-JP')}
-                  </TableCell>
-                  <TableCell align="center">
-                    <LocationLink venue={row.venue} />
-                  </TableCell>
-                  <TableCell align="center">
-                    <BatteryLevel
-                      isCharging={row.robotStats.isCharging}
-                      batteryLevel={row.robotStats.batteryLevel}
-                    />
-                  </TableCell>
-                  <TableCell align="center">
-                    <NetworkIndicator
-                      networkConnected={row.robotStats.networkConnected}
-                    />
-                  </TableCell>
-                </TableRow>
+                <RobotRow index={index} row={row} />
               ))}
           </TableBody>
         </Table>
