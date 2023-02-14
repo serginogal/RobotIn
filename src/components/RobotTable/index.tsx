@@ -12,19 +12,19 @@ import {
   TableSortLabel,
 } from '@mui/material'
 
-import TitleGradient from '@components/TitleGradient'
-import SearchInput from '@components/SearchInput'
+import { Order, sortBy, SupportedHeaders } from '@utils/sortBy'
 import StatusIndicator from '@components/StatusIndicator'
-import NameAndId from '@components/NameAndId'
-import LocationLink from '@components/LocationLink'
-import BatteryLevel from '@components/BatteryLevel'
 import NetworkIndicator from '@components/NetworkIndicator'
+import TitleGradient from '@components/TitleGradient'
+import BatteryLevel from '@components/BatteryLevel'
+import LocationLink from '@components/LocationLink'
+import SearchInput from '@components/SearchInput'
+import NameAndId from '@components/NameAndId'
 
 // Table states
 import EmptyTable from './TableStates/EmptyTable'
 import ErrorTable from './TableStates/ErrorTable'
 import LoadingTable from './TableStates/LoadingTable'
-import { Order, sortBy, SupportedHeaders } from '@utils/sortBy'
 
 // This constants/components could be extracted in different files,
 // but it's more readable if kept in here
